@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <label for="celsius">Celsius: </label>
+        <input type="number" id="celsius" placeholder="Enter Celsius" oninput="convertTemperature()" step="0.01">
+        <br>
+        <label for="fahrenheit">Fahrenheit: </label>
+        <input type="text" id="fahrenheit" readonly><br>
+        <label for="kelvin">Kelvin: </label>
+        <input type="text" id="kelvin" readonly>
+    </div>
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById("celsius");
+            const fahrenheitInput = document.getElementById("fahrenheit");
+            const kelvinInput = document.getElementById("kelvin");
+
+            const celsius = parseFloat(celsiusInput.value);
+
+            if (!isNaN(celsius)) 
+            {
+                const fahrenheit = (celsius * 9/5) + 32;
+                const kelvin = celsius + 273.15;
+                fahrenheitInput.value = fahrenheit.toFixed(2);
+                kelvinInput.value = kelvin.toFixed(2);
+            } 
+            else
+            {
+                fahrenheitInput.value = "";
+                kelvinInput.value = "";
+            }
+        }
+
+        convertTemperature();
+    </script>
+    
+</body>
+</html>
